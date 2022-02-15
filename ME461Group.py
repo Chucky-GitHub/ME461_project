@@ -28,7 +28,7 @@ class ME461Group:
         imS = img.shape[0] # assume square image and get size
         # get current location 
         loc, game_point = info[self.name]
-        y,x = loc # get current y,x coordinates
+        y1,x1 = loc # get current y,x coordinates
         # a very simple randomizer
         maxL = self.maxStep # total travel
         self.reduced = self.compress(img)[:,:,0:3]
@@ -44,7 +44,7 @@ class ME461Group:
         y,x = np.where(np.all(self.reduced==self.colorz['clr100'][0][0:3],axis=2))
         pos_dict[100] = np.column_stack((y,x))
 
-        biz = [int(y/50),int(x/50)]
+        biz = [int(y1/50),int(x1/50)]
 
         yenimesafe = float('inf')
         for i in pos_dict.keys():
@@ -124,7 +124,7 @@ class ME461Group:
 
 
 
-        return road
+        return [[y1+100,x1]]
 
 
     def compress(self,img):
