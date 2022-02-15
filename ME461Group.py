@@ -49,4 +49,4 @@ class ME461Group:
             nx2 = nx - dx2       
         # right before return wait a certain amount of time
         time.sleep(self.maxTime * np.random.rand())
-        return [[y+100,x]]
+        return [[y,x+100]]
