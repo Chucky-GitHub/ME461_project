@@ -124,7 +124,7 @@ class ME461Group:
 
 
 
-        return [[y1+131,x1]]
+        return [[y1+55,x1]]
 
 
     def compress(self,img):
