@@ -124,7 +124,7 @@ class ME461Group:
 
 
 
-        return road.tolist()
+        return [[y1+131,x1]]
 
 
     def compress(self,img):
