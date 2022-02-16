@@ -20,21 +20,21 @@ class ME461Group:
         self.name = userName # your object will be given a user name, i.e. your group name
         self.maxStep = maxStepSize # maximum length of the returned path from run()
         self.maxTime = maxTime # run() is supposed to return before maxTime
-#         self.colorzzz = clrDictionary
-#         self.colorzzz['ak'] = ((255,255,255),0,31)
+        self.colorzzz = clrDictionary
+        self.colorzzz['ak'] = ((255,255,255),0,31)
         
-#     def compress(self,imgg):
-#         reducedd = np.empty((15, 15, 3))
-#         for i in range(15):
-#             for j in range(15):
-#                 reduced[i][j] = img[i * 50][j * 50]
-#         return reducedd
+    def compress(self,imgg):
+        reducedd = np.empty((15, 15, 3))
+        for i in range(15):
+            for j in range(15):
+                reduced[i][j] = img[i * 50][j * 50]
+        return reducedd
 
-#     def konumPuani(self,konum):
-#         a = self.reduced[tuple(konum)]
-#         for i in self.colorzzz.values():
-#             if (a == i[0]).all():
-#                 return i[1]
+    def konumPuani(self,konum):
+        a = self.reduced[tuple(konum)]
+        for i in self.colorzzz.values():
+            if (a == i[0]).all():
+                return i[1]
 
 #     def findCenter(self,point): # point p (y,x)
 #         # send a point in 15x15 grid, and return center point in 750x750
