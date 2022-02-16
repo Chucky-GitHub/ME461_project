@@ -23,18 +23,18 @@ class ME461Group:
         self.colorzzz = clrDictionary
         self.colorzzz['ak'] = ((255,255,255),0,31)
         
-#     def compress(self,img):
-#         reduced = np.empty((15, 15, 3))
-#         for i in range(15):
-#             for j in range(15):
-#                 reduced[i][j] = img[i * 50][j * 50]
-#         return reduced
+    def compress(self,img):
+        reduced = np.empty((15, 15, 3))
+        for i in range(15):
+            for j in range(15):
+                reduced[i][j] = img[i * 50][j * 50]
+        return reduced
 
-#     def konumPuani(self,konum):
-#         a = self.reduced[tuple(konum)]
-#         for i in self.colorzzz.values():
-#             if (a == i[0]).all():
-#                 return i[1]
+    def konumPuani(self,konum):
+        a = self.reduced[tuple(konum)]
+        for i in self.colorzzz.values():
+            if (a == i[0]).all():
+                return i[1]
 
 #     def findCenter(self,point): # point p (y,x)
 #         # send a point in 15x15 grid, and return center point in 750x750
