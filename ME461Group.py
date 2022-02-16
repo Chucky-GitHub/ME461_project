@@ -94,9 +94,9 @@ class ME461Group:
         # a very simple randomizer
         maxL = self.maxStep # total travel
         
-#         self.reduced = self.compress(img)[:,:,0:3]
+        self.reduced = self.compress(img)[:,:,0:3]
 
-#         pos_dict = {}
+        pos_dict = {}
 
 #         y,x = np.where(np.all(self.reduced==self.colorzzz['clr20'][0][0:3],axis=2))
 #         pos_dict[20] = np.column_stack((y,x))
