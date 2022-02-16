@@ -21,7 +21,7 @@ class ME461Group:
         self.maxStep = maxStepSize # maximum length of the returned path from run()
         self.maxTime = maxTime # run() is supposed to return before maxTime
         self.colorzzz = clrDictionary
-#         self.colorzzz['ak'] = ((255,255,255),0,0)
+        self.colorzzz['ak'] = ((255,255,255),0,0)
         
     def compress(self,imgg):
         reducedd = np.empty((15, 15, 3))
@@ -94,96 +94,96 @@ class ME461Group:
         # a very simple randomizer
         maxL = self.maxStep # total travel
         
-        self.reduced = self.compress(img)[:,:,0:3]
+#         self.reduced = self.compress(img)[:,:,0:3]
 
-        pos_dict = {}
+#         pos_dict = {}
 
-        y,x = np.where(np.all(self.reduced==self.colorzzz['clr20'][0][0:3],axis=2))
-        pos_dict[20] = np.column_stack((y,x))
-        y,x = np.where(np.all(self.reduced==self.colorzzz['clr30'][0][0:3],axis=2))
-        pos_dict[30] = np.column_stack((y,x))
-        y,x = np.where(np.all(self.reduced==self.colorzzz['clr50'][0][0:3],axis=2))
-        pos_dict[50] = np.column_stack((y,x))
-        y,x = np.where(np.all(self.reduced==self.colorzzz['clr100'][0][0:3],axis=2))
-        pos_dict[100] = np.column_stack((y,x))
+#         y,x = np.where(np.all(self.reduced==self.colorzzz['clr20'][0][0:3],axis=2))
+#         pos_dict[20] = np.column_stack((y,x))
+#         y,x = np.where(np.all(self.reduced==self.colorzzz['clr30'][0][0:3],axis=2))
+#         pos_dict[30] = np.column_stack((y,x))
+#         y,x = np.where(np.all(self.reduced==self.colorzzz['clr50'][0][0:3],axis=2))
+#         pos_dict[50] = np.column_stack((y,x))
+#         y,x = np.where(np.all(self.reduced==self.colorzzz['clr100'][0][0:3],axis=2))
+#         pos_dict[100] = np.column_stack((y,x))
 
-        biz = [int(y1/50),int(x1/50)]
+#         biz = [int(y1/50),int(x1/50)]
 
-        yenimesafe = float('inf')
-        for i in pos_dict.keys():
-            for j in pos_dict[i]:
-                mesafe = abs(biz[0]-j[0])+abs(biz[1]-j[1])
-                if mesafe <= yenimesafe:
-                    hedef = j
-                    yenimesafe = mesafe
+#         yenimesafe = float('inf')
+#         for i in pos_dict.keys():
+#             for j in pos_dict[i]:
+#                 mesafe = abs(biz[0]-j[0])+abs(biz[1]-j[1])
+#                 if mesafe <= yenimesafe:
+#                     hedef = j
+#                     yenimesafe = mesafe
 
-        print('bizim yer',biz,'- hedef',hedef)
+#         print('bizim yer',biz,'- hedef',hedef)
 
-        tumiht = []
-        yollar = []
-        tumiht.append([biz])
-        while tumiht:
-            guzerg = tumiht.pop(0)
-            sonDurak = guzerg[-1]
-            y,x = sonDurak
-            if (sonDurak == hedef).all():
-                yollar.append(guzerg.copy())
-            if y < hedef[0]:    # hedef altta
-                guzerg.append([y+1,x])
-                tumiht.append(guzerg.copy())
-                guzerg.pop()
-            if y > hedef[0]:    # hedef ustte
-                guzerg.append([y-1,x])
-                tumiht.append(guzerg.copy())
-                guzerg.pop()
-            if x < hedef[1]:    # hedef sagda
-                guzerg.append([y,x+1])
-                tumiht.append(guzerg.copy())
-                guzerg.pop()
-            if x > hedef[1]:    # hedef solda
-                guzerg.append([y,x-1])
-                tumiht.append(guzerg.copy())
-                guzerg.pop()
+#         tumiht = []
+#         yollar = []
+#         tumiht.append([biz])
+#         while tumiht:
+#             guzerg = tumiht.pop(0)
+#             sonDurak = guzerg[-1]
+#             y,x = sonDurak
+#             if (sonDurak == hedef).all():
+#                 yollar.append(guzerg.copy())
+#             if y < hedef[0]:    # hedef altta
+#                 guzerg.append([y+1,x])
+#                 tumiht.append(guzerg.copy())
+#                 guzerg.pop()
+#             if y > hedef[0]:    # hedef ustte
+#                 guzerg.append([y-1,x])
+#                 tumiht.append(guzerg.copy())
+#                 guzerg.pop()
+#             if x < hedef[1]:    # hedef sagda
+#                 guzerg.append([y,x+1])
+#                 tumiht.append(guzerg.copy())
+#                 guzerg.pop()
+#             if x > hedef[1]:    # hedef solda
+#                 guzerg.append([y,x-1])
+#                 tumiht.append(guzerg.copy())
+#                 guzerg.pop()
 
-        print('tüm yollar',yollar)
+#         print('tüm yollar',yollar)
 
-        eskiTop = 0
-        for i in range(len(yollar)):
-            top = 0
-            for j in yollar[i]:
-                top += self.konumPuani(j)
-            if top > eskiTop:
-                guzelYol = yollar[i]
-                guzelYol.pop(0)
-                eskiTop = top
-        print('en güzel yol', guzelYol)
+#         eskiTop = 0
+#         for i in range(len(yollar)):
+#             top = 0
+#             for j in yollar[i]:
+#                 top += self.konumPuani(j)
+#             if top > eskiTop:
+#                 guzelYol = yollar[i]
+#                 guzelYol.pop(0)
+#                 eskiTop = top
+#         print('en güzel yol', guzelYol)
 
-        pos = self.findCenter(loc)
-        yolnp = np.array(guzelYol)
-        pos2 = np.copy(pos)
-        way = [np.copy(pos),]
+#         pos = self.findCenter(loc)
+#         yolnp = np.array(guzelYol)
+#         pos2 = np.copy(pos)
+#         way = [np.copy(pos),]
 
-        total_walk = 0
+#         total_walk = 0
 
-        for target in yolnp:
-            pix = self.findTargetPoint(pos2,target)
-            way = np.append(way,pix,axis=0)
-            pos2 = np.copy(pix[-1])
+#         for target in yolnp:
+#             pix = self.findTargetPoint(pos2,target)
+#             way = np.append(way,pix,axis=0)
+#             pos2 = np.copy(pix[-1])
 
 
-        for i in range(len(way) - 1):
-            total_walk += self.travelLength1(way[i],way[i+1])
-            print(total_walk)
-            if total_walk > 100:
-                diff = total_walk - 100
-                dir = np.not_equal(way[i+1] - way[i],0)
-                road = np.copy(way[0:i+1])
+#         for i in range(len(way) - 1):
+#             total_walk += self.travelLength1(way[i],way[i+1])
+#             print(total_walk)
+#             if total_walk > 100:
+#                 diff = total_walk - 100
+#                 dir = np.not_equal(way[i+1] - way[i],0)
+#                 road = np.copy(way[0:i+1])
                 
-                if(dir[0]):
-                    road = np.append(road,[[way[i+1][0]-diff,way[i+1][1]]],axis=0)
-                if(dir[1]):
-                    road = np.append(road,[[way[i+1][0],way[i+1][1] + diff]],axis=0)
-                break
+#                 if(dir[0]):
+#                     road = np.append(road,[[way[i+1][0]-diff,way[i+1][1]]],axis=0)
+#                 if(dir[1]):
+#                     road = np.append(road,[[way[i+1][0],way[i+1][1] + diff]],axis=0)
+#                 break
 
 
 
