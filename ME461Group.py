@@ -94,20 +94,20 @@ class ME461Group:
         # a very simple randomizer
         maxL = self.maxStep # total travel
         
-        self.reduced = self.compress(img)[:,:,0:3]
+#         self.reduced = self.compress(img)[:,:,0:3]
 
-        pos_dict = {}
+#         pos_dict = {}
 
-        y,x = np.where(np.all(self.reduced==self.colorzzz['clr20'][0][0:3],axis=2))
-        pos_dict[20] = np.column_stack((y,x))
-        y,x = np.where(np.all(self.reduced==self.colorzzz['clr30'][0][0:3],axis=2))
-        pos_dict[30] = np.column_stack((y,x))
-        y,x = np.where(np.all(self.reduced==self.colorzzz['clr50'][0][0:3],axis=2))
-        pos_dict[50] = np.column_stack((y,x))
-        y,x = np.where(np.all(self.reduced==self.colorzzz['clr100'][0][0:3],axis=2))
-        pos_dict[100] = np.column_stack((y,x))
+#         y,x = np.where(np.all(self.reduced==self.colorzzz['clr20'][0][0:3],axis=2))
+#         pos_dict[20] = np.column_stack((y,x))
+#         y,x = np.where(np.all(self.reduced==self.colorzzz['clr30'][0][0:3],axis=2))
+#         pos_dict[30] = np.column_stack((y,x))
+#         y,x = np.where(np.all(self.reduced==self.colorzzz['clr50'][0][0:3],axis=2))
+#         pos_dict[50] = np.column_stack((y,x))
+#         y,x = np.where(np.all(self.reduced==self.colorzzz['clr100'][0][0:3],axis=2))
+#         pos_dict[100] = np.column_stack((y,x))
 
-        biz = [int(y1/50),int(x1/50)]
+#         biz = [int(y1/50),int(x1/50)]
 
 #         yenimesafe = float('inf')
 #         for i in pos_dict.keys():
