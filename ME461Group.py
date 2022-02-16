@@ -109,15 +109,15 @@ class ME461Group:
 
         biz = [int(y1/50),int(x1/50)]
 
-        yenimesafe = float('inf')
-        for i in pos_dict.keys():
-            for j in pos_dict[i]:
-                mesafe = abs(biz[0]-j[0])+abs(biz[1]-j[1])
-                if mesafe <= yenimesafe:
-                    hedef = j
-                    yenimesafe = mesafe
+#         yenimesafe = float('inf')
+#         for i in pos_dict.keys():
+#             for j in pos_dict[i]:
+#                 mesafe = abs(biz[0]-j[0])+abs(biz[1]-j[1])
+#                 if mesafe <= yenimesafe:
+#                     hedef = j
+#                     yenimesafe = mesafe
 
-        print('bizim yer',biz,'- hedef',hedef)
+#         print('bizim yer',biz,'- hedef',hedef)
 
 #         tumiht = []
 #         yollar = []
