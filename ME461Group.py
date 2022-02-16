@@ -94,7 +94,7 @@ class ME461Group:
         # a very simple randomizer
         maxL = self.maxStep # total travel
         
-        self.reduced = self.compress(img)
+        self.reduced = self.compress(img)[:,:,0:3]
 
         pos_dict = {}
 
