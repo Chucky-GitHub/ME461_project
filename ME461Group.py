@@ -21,7 +21,7 @@ class ME461Group:
         self.maxStep = maxStepSize # maximum length of the returned path from run()
         self.maxTime = maxTime # run() is supposed to return before maxTime
         self.colorzzz = clrDictionary
-        self.colorzzz['ak'] = ((255,255,255),0,31)
+        self.colorzzz['ak'] = ((255,255,255),0,0)
         
     def compress(self,imgg):
         reducedd = np.empty((15, 15, 3))
