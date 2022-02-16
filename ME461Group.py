@@ -22,7 +22,69 @@ class ME461Group:
         self.maxTime = maxTime # run() is supposed to return before maxTime
         self.colorz = clrDictionary
         self.colorz['ak'] = ((255,255,255),0,31)
-  
+        
+     def compress(self,img):
+        reduced = np.empty((15, 15, 3))
+        for i in range(15):
+            for j in range(15):
+                reduced[i][j] = img[i * 50][j * 50]
+        return reduced
+
+    def konumPuani(self,konum):
+        a = self.reduced[tuple(konum)]
+        for i in self.colorz.values():
+            if (a == i[0]).all():
+                return i[1]
+
+    def findCenter(self,point): # point p (y,x)
+        # send a point in 15x15 grid, and return center point in 750x750
+        center = point * 50 + 25
+        return center
+
+
+    def findTargetPoint(self,pos,target): # position in 750x750, target point in 15x15 grid
+        target_center = self.findCenter(target)
+        posx = pos[1]
+        posy = pos[0]
+        centerx = target_center[1]
+        centery = target_center[0]
+    
+        if(posx <= centerx + 25 and posx >= centerx - 25 and posy <= centery + 25 and posy >= centery - 25):
+            return [pos,]
+
+        if(posx <= centerx + 25 and posx >= centerx-25):
+            if(posy <= centery - 25):
+                target_pix = np.array([[centery - 25,posx]])
+            else:
+                target_pix = np.array([[centery + 25,posx]])
+        
+        elif(posy <= centery + 25 and posy >= centery - 25):
+            if(posx <= centerx - 25):
+                target_pix = np.array([[posy,centerx - 25]])
+            else:
+                target_pix = np.array([[posy,centerx + 25]])
+
+        else:
+            if(posx > centerx and posy > centery):
+                target_pix = np.array([[centery + 25,posx],[centery + 25,centerx + 25]])
+            
+            elif(posx < centerx and posy > centery):
+                target_pix = np.array([[centery + 25,posx],[centery + 25,centerx - 25]])
+            
+            elif(posx > centerx and posy < centery):
+                target_pix = np.array([[centery - 25,posx],[centery - 25,centerx + 25]])
+            
+            else:
+                target_pix = np.array([[centery - 25,posx],[centery - 25,centerx - 25]])    
+        
+        return target_pix
+
+    def travelLength1(self,pos, target): # both points in 750x750
+        return abs(pos[0]-target[0]) + abs(pos[1] - target[1])
+
+
+
+
     def run(self, img, info):
         myinfo = info[self.name]
         imS = img.shape[0] # assume square image and get size
@@ -124,65 +186,7 @@ class ME461Group:
 
 
 
-        return [[y1+55,x1]]
+        return [[y1+100,x1]]
 
 
-    def compress(self,img):
-        reduced = np.empty((15, 15, 3))
-        for i in range(15):
-            for j in range(15):
-                reduced[i][j] = img[i * 50][j * 50]
-        return reduced
-
-    def konumPuani(self,konum):
-        a = self.reduced[tuple(konum)]
-        for i in self.colorz.values():
-            if (a == i[0]).all():
-                return i[1]
-
-    def findCenter(self,point): # point p (y,x)
-        # send a point in 15x15 grid, and return center point in 750x750
-        center = point * 50 + 25
-        return center
-
-
-    def findTargetPoint(self,pos,target): # position in 750x750, target point in 15x15 grid
-        target_center = self.findCenter(target)
-        posx = pos[1]
-        posy = pos[0]
-        centerx = target_center[1]
-        centery = target_center[0]
-    
-        if(posx <= centerx + 25 and posx >= centerx - 25 and posy <= centery + 25 and posy >= centery - 25):
-            return [pos,]
-
-        if(posx <= centerx + 25 and posx >= centerx-25):
-            if(posy <= centery - 25):
-                target_pix = np.array([[centery - 25,posx]])
-            else:
-                target_pix = np.array([[centery + 25,posx]])
-        
-        elif(posy <= centery + 25 and posy >= centery - 25):
-            if(posx <= centerx - 25):
-                target_pix = np.array([[posy,centerx - 25]])
-            else:
-                target_pix = np.array([[posy,centerx + 25]])
-
-        else:
-            if(posx > centerx and posy > centery):
-                target_pix = np.array([[centery + 25,posx],[centery + 25,centerx + 25]])
-            
-            elif(posx < centerx and posy > centery):
-                target_pix = np.array([[centery + 25,posx],[centery + 25,centerx - 25]])
-            
-            elif(posx > centerx and posy < centery):
-                target_pix = np.array([[centery - 25,posx],[centery - 25,centerx + 25]])
-            
-            else:
-                target_pix = np.array([[centery - 25,posx],[centery - 25,centerx - 25]])    
-        
-        return target_pix
-
-    def travelLength1(self,pos, target): # both points in 750x750
-        return abs(pos[0]-target[0]) + abs(pos[1] - target[1])
-
+   
