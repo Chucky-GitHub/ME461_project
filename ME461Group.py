@@ -23,7 +23,7 @@ class ME461Group:
         self.colorz = clrDictionary
         self.colorz['ak'] = ((255,255,255),0,31)
         
-     def compress(self,img):
+    def compress(self,img):
         reduced = np.empty((15, 15, 3))
         for i in range(15):
             for j in range(15):
