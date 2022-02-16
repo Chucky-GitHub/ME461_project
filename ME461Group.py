@@ -20,8 +20,8 @@ class ME461Group:
         self.name = userName # your object will be given a user name, i.e. your group name
         self.maxStep = maxStepSize # maximum length of the returned path from run()
         self.maxTime = maxTime # run() is supposed to return before maxTime
-        self.colorz = clrDictionary
-        self.colorz['ak'] = ((255,255,255),0,31)
+        self.colorzzz = clrDictionary
+        self.colorzzz['ak'] = ((255,255,255),0,31)
         
     def compress(self,img):
         reduced = np.empty((15, 15, 3))
@@ -32,7 +32,7 @@ class ME461Group:
 
     def konumPuani(self,konum):
         a = self.reduced[tuple(konum)]
-        for i in self.colorz.values():
+        for i in self.colorzzz.values():
             if (a == i[0]).all():
                 return i[1]
 
@@ -97,13 +97,13 @@ class ME461Group:
 
         pos_dict = {}
 
-        y,x = np.where(np.all(self.reduced==self.colorz['clr20'][0][0:3],axis=2))
+        y,x = np.where(np.all(self.reduced==self.colorzzz['clr20'][0][0:3],axis=2))
         pos_dict[20] = np.column_stack((y,x))
-        y,x = np.where(np.all(self.reduced==self.colorz['clr30'][0][0:3],axis=2))
+        y,x = np.where(np.all(self.reduced==self.colorzzz['clr30'][0][0:3],axis=2))
         pos_dict[30] = np.column_stack((y,x))
-        y,x = np.where(np.all(self.reduced==self.colorz['clr50'][0][0:3],axis=2))
+        y,x = np.where(np.all(self.reduced==self.colorzzz['clr50'][0][0:3],axis=2))
         pos_dict[50] = np.column_stack((y,x))
-        y,x = np.where(np.all(self.reduced==self.colorz['clr100'][0][0:3],axis=2))
+        y,x = np.where(np.all(self.reduced==self.colorzzz['clr100'][0][0:3],axis=2))
         pos_dict[100] = np.column_stack((y,x))
 
         biz = [int(y1/50),int(x1/50)]
