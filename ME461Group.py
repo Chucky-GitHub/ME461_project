@@ -98,8 +98,10 @@ class ME461Group:
 
         pos_dict = {}
 
-        y,x = np.where(np.all(self.reduced==self.colorzzz['clr20'][0],axis=2))
-#         pos_dict[20] = np.column_stack((y,x))
+#         y,x = np.where(np.all(self.reduced==self.colorzzz['clr20'][0],axis=2))
+        y = [1, 2]
+        x = [3 , 4]
+        pos_dict[20] = np.column_stack((y,x))
 #         y,x = np.where(np.all(self.reduced==self.colorzzz['clr30'][0],axis=2))
 #         pos_dict[30] = np.column_stack((y,x))
 #         y,x = np.where(np.all(self.reduced==self.colorzzz['clr50'][0],axis=2))
