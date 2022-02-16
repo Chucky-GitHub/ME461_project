@@ -25,9 +25,9 @@ class ME461Group:
         
     def compress(self,img):
         reduced = np.empty((15, 15, 3))
-        for i in range(15):
-            for j in range(15):
-                reduced[i][j] = img[i * 50][j * 50]
+#         for i in range(15):
+#             for j in range(15):
+#                 reduced[i][j] = img[i * 50][j * 50]
         return reduced
 
 #     def konumPuani(self,konum):
