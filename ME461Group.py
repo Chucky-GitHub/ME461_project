@@ -23,12 +23,12 @@ class ME461Group:
         self.colorzzz = clrDictionary
         self.colorzzz['ak'] = ((255,255,255),0,31)
         
-    def compress(self,imgg):
-        reducedd = np.empty((15, 15, 3))
+#     def compress(self,imgg):
+#         reducedd = np.empty((15, 15, 3))
 #         for i in range(15):
 #             for j in range(15):
 #                 reduced[i][j] = img[i * 50][j * 50]
-        return reducedd
+#         return reducedd
 
 #     def konumPuani(self,konum):
 #         a = self.reduced[tuple(konum)]
