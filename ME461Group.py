@@ -101,7 +101,7 @@ class ME461Group:
 #         y,x = np.where(np.all(self.reduced==self.colorzzz['clr20'][0],axis=2))
         y = [1, 2]
         x = [3 , 4]
-        pos_dict[20] = np.column_stack((y,x))
+#         pos_dict[20] = np.column_stack((y,x))
 #         y,x = np.where(np.all(self.reduced==self.colorzzz['clr30'][0],axis=2))
 #         pos_dict[30] = np.column_stack((y,x))
 #         y,x = np.where(np.all(self.reduced==self.colorzzz['clr50'][0],axis=2))
@@ -109,7 +109,7 @@ class ME461Group:
 #         y,x = np.where(np.all(self.reduced==self.colorzzz['clr100'][0],axis=2))
 #         pos_dict[100] = np.column_stack((y,x))
 
-#         biz = [int(y1/50),int(x1/50)]
+        biz = [int(y1/50),int(x1/50)]
 
 #         yenimesafe = float('inf')
 #         for i in pos_dict.keys():
@@ -118,36 +118,37 @@ class ME461Group:
 #                 if mesafe <= yenimesafe:
 #                     hedef = j
 #                     yenimesafe = mesafe
+        hedef = [1,1]
 
-#         print('bizim yer',biz,'- hedef',hedef)
+        print('bizim yer',biz,'- hedef',hedef)
 
-#         tumiht = []
-#         yollar = []
-#         tumiht.append([biz])
-#         while tumiht:
-#             guzerg = tumiht.pop(0)
-#             sonDurak = guzerg[-1]
-#             y,x = sonDurak
-#             if (sonDurak == hedef).all():
-#                 yollar.append(guzerg.copy())
-#             if y < hedef[0]:    # hedef altta
-#                 guzerg.append([y+1,x])
-#                 tumiht.append(guzerg.copy())
-#                 guzerg.pop()
-#             if y > hedef[0]:    # hedef ustte
-#                 guzerg.append([y-1,x])
-#                 tumiht.append(guzerg.copy())
-#                 guzerg.pop()
-#             if x < hedef[1]:    # hedef sagda
-#                 guzerg.append([y,x+1])
-#                 tumiht.append(guzerg.copy())
-#                 guzerg.pop()
-#             if x > hedef[1]:    # hedef solda
-#                 guzerg.append([y,x-1])
-#                 tumiht.append(guzerg.copy())
-#                 guzerg.pop()
+        tumiht = []
+        yollar = []
+        tumiht.append([biz])
+        while tumiht:
+            guzerg = tumiht.pop(0)
+            sonDurak = guzerg[-1]
+            y,x = sonDurak
+            if (sonDurak == hedef).all():
+                yollar.append(guzerg.copy())
+            if y < hedef[0]:    # hedef altta
+                guzerg.append([y+1,x])
+                tumiht.append(guzerg.copy())
+                guzerg.pop()
+            if y > hedef[0]:    # hedef ustte
+                guzerg.append([y-1,x])
+                tumiht.append(guzerg.copy())
+                guzerg.pop()
+            if x < hedef[1]:    # hedef sagda
+                guzerg.append([y,x+1])
+                tumiht.append(guzerg.copy())
+                guzerg.pop()
+            if x > hedef[1]:    # hedef solda
+                guzerg.append([y,x-1])
+                tumiht.append(guzerg.copy())
+                guzerg.pop()
 
-#         print('tüm yollar',yollar)
+        print('tüm yollar',yollar)
 
 #         eskiTop = 0
 #         for i in range(len(yollar)):
